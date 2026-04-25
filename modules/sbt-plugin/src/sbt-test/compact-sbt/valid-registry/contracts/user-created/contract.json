@@ -1,0 +1,14 @@
+{
+  "formatVersion": 1,
+  "contract": {
+    "id": "user-created",
+    "name": "User Created",
+    "version": "1.2.0",
+    "fields": [
+      {"name": "id",    "fieldType": {"kind": "uuid"}, "required": true},
+      {"name": "email", "fieldType": {"kind": "str"},  "required": true},
+      {"name": "age",   "fieldType": {"kind": "int32"},"required": false}
+    ],
+    "owner": "user-service"
+  }
+}

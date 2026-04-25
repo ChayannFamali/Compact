@@ -1,0 +1,73 @@
+# Пример GitHub Actions workflow для проверки контрактов.
+# Скопируй в .github/workflows/compact-check.yml своего проекта.
+# Требует: enablePlugins(CompactPlugin) в build.sbt
+
+name: compact — Contract Check
+
+on:
+  pull_request:
+    branches: [ main ]
+    # Запускать только если изменились файлы реестра или код
+    paths:
+      - 'contracts/**'
+      - 'modules/**/src/**'
+      - 'build.sbt'
+
+jobs:
+  contract-check:
+    name: Validate contracts registry
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Java 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+          cache: sbt
+
+      - name: Compile project
+        run: sbt compile
+
+      - name: Check contracts registry
+        run: sbt compactCheck
+        # Падает если:
+        #   - consumers.json содержит несовместимые версии
+        #   - contract.json файлы отсутствуют или невалидны
+        #   - Orphan consumers (ссылки на несуществующие контракты)
+
+      - name: Show contracts report
+        if: always()
+        run: sbt compactReport
+        # Показывает отчёт даже если check упал
+
+---
+# Workflow для публикации при мерже в main
+
+# name: compact — Publish Contracts
+#
+# on:
+#   push:
+#     branches: [ main ]
+#
+# jobs:
+#   publish:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v4
+#       - uses: actions/setup-java@v4
+#         with:
+#           distribution: temurin
+#           java-version: 21
+#           cache: sbt
+#       - run: sbt compactPublish
+#       - name: Commit updated registry
+#         run: |
+#           git config user.name "compact-bot"
+#           git config user.email "compact@noreply"
+#           git add contracts/
+#           git diff --staged --quiet || git commit -m "chore: update contracts registry [skip ci]"
+#           git push

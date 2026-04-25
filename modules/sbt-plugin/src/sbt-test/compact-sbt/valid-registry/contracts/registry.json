@@ -1,0 +1,10 @@
+{
+  "contracts": [
+    {
+      "id": "user-created",
+      "name": "User Created",
+      "currentVersion": "1.2.0",
+      "owner": "user-service"
+    }
+  ]
+}

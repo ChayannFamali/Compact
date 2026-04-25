@@ -1,0 +1,13 @@
+{
+  "formatVersion": 1,
+  "contract": {
+    "id": "payment-event",
+    "name": "Payment Event",
+    "version": "2.0.0",
+    "fields": [
+      {"name": "id",     "fieldType": {"kind": "uuid"}, "required": true},
+      {"name": "amount", "fieldType": {"kind": "int64"},"required": true}
+    ],
+    "owner": "payment-service"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "contractId": "payment-event",
+  "consumers": [
+    {
+      "consumerId": "billing-service",
+      "contractId": "payment-event",
+      "minimumVersion": "1.0.0",
+      "registeredAt": "2024-01-01T00:00:00Z"
+    }
+  ]
+}

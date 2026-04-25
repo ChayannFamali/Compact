@@ -1,0 +1,44 @@
+# Scala / SBT
+target/
+project/target/
+project/project/
+.bsp/
+
+# IDE
+.idea/
+.idea_modules/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.metals/
+.bloop/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Linux
+*~
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Логи
+*.log
+logs/
+
+# Рантайм данные тестов
+/tmp/
+test-registry/
+
+# Docker
+docker-compose.override.yml
+
+# Документация (генерируется)
+docs/api/
+
+# Артефакты публикации
+*.asc

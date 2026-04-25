@@ -1,0 +1,10 @@
+{
+  "contracts": [
+    {
+      "id": "payment-event",
+      "name": "Payment Event",
+      "currentVersion": "2.0.0",
+      "owner": "payment-service"
+    }
+  ]
+}

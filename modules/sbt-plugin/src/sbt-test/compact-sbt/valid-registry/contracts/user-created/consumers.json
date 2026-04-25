@@ -1,0 +1,17 @@
+{
+  "contractId": "user-created",
+  "consumers": [
+    {
+      "consumerId": "order-service",
+      "contractId": "user-created",
+      "minimumVersion": "1.0.0",
+      "registeredAt": "2024-01-01T00:00:00Z"
+    },
+    {
+      "consumerId": "analytics-service",
+      "contractId": "user-created",
+      "minimumVersion": "1.1.0",
+      "registeredAt": "2024-06-01T00:00:00Z"
+    }
+  ]
+}
